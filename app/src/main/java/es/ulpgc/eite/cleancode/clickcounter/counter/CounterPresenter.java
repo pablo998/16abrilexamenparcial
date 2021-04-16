@@ -105,7 +105,7 @@ public class CounterPresenter implements CounterContract.Presenter {
 
     CounterToClicksState counterToClicksState = new CounterToClicksState();
     passStateToNextScreen(counterToClicksState);
-
+    view.get().navigateToNextScreen();
   }
 
   @Override
@@ -113,6 +113,7 @@ public class CounterPresenter implements CounterContract.Presenter {
     // Log.e(TAG, "onResetPressed()");
     state.data = "0";
     model.updateData(state.data);
+    view.get().onDataUpdated(state);
   }
 
   @Override
@@ -123,6 +124,7 @@ public class CounterPresenter implements CounterContract.Presenter {
       state.data = "0";
     }
     model.updateData(state.data);
+    view.get().onDataUpdated(state);
   }
 
   private void passStateToNextScreen(CounterToClicksState state) {
