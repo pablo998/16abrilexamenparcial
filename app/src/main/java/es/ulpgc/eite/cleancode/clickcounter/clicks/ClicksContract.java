@@ -9,6 +9,7 @@ public interface ClicksContract {
     void injectPresenter(Presenter presenter);
     void onDataUpdated(ClicksViewModel viewModel);
     void finish();
+    void disableButton();
   }
 
   interface Presenter {

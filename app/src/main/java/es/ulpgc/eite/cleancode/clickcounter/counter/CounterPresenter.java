@@ -56,6 +56,7 @@ public class CounterPresenter implements CounterContract.Presenter {
     // Log.e(TAG, "onRestart()");
 
     // update the model if is necessary
+    valorClicks = Integer.parseInt(state.Clicks);
     model.onRestartScreen(state.data);
     state.data = model.getStoredData();
     view.get().onDataUpdated(state);
@@ -105,8 +106,9 @@ public class CounterPresenter implements CounterContract.Presenter {
   public void onClicksPressed() {
     // Log.e(TAG, "onClicksPressed()");
 
+    String valorPasado = String.valueOf(valorClicks);
     CounterToClicksState counterToClicksState = new CounterToClicksState();
-    counterToClicksState.data = state.data;
+    counterToClicksState.data = valorPasado;
     passStateToNextScreen(counterToClicksState);
     view.get().navigateToNextScreen();
   }
@@ -122,7 +124,7 @@ public class CounterPresenter implements CounterContract.Presenter {
   @Override
   public void onIncrementPressed() {
     // Log.e(TAG, "onIncrementPressed()");
-    valorClicks= valorClicks + 1;
+    valorClicks++;
     view.get().enableButtons();
 
     int dataNumero = Integer.parseInt(state.data);
@@ -131,11 +133,6 @@ public class CounterPresenter implements CounterContract.Presenter {
     if(dataNumero>9){
       dataNumero = 0;
     }
-
-    String valorPasado = String.valueOf(valorClicks);
-    CounterToClicksState counterToClicksState = new CounterToClicksState();
-    counterToClicksState.data=valorPasado;
-    mediator.setCounterNextScreenState(counterToClicksState);
 
     state.data = String.valueOf(dataNumero);
     model.updateData(state.data);

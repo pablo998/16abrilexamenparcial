@@ -2,6 +2,7 @@ package es.ulpgc.eite.cleancode.clickcounter.clicks;
 
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -15,11 +16,14 @@ public class ClicksActivity
 
   private ClicksContract.Presenter presenter;
 
+  Button clear;
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_clicks);
     getSupportActionBar().setTitle(R.string.clicks_title);
+
+    clear = findViewById(R.id.btnClear);
 
     // do the setup
     ClicksScreen.configure(this);
@@ -43,6 +47,10 @@ public class ClicksActivity
 
     // load the data
     presenter.onResume();
+  }
+  @Override
+  public void disableButton() {
+    clear.setEnabled(false);
   }
 
   @Override

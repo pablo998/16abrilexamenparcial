@@ -85,10 +85,6 @@ public class ClicksPresenter implements ClicksContract.Presenter {
   @Override
   public void onBackPressed() {
     // Log.e(TAG, "onBackPressed()");
-    ClicksToCounterState clicksToCounterState = new ClicksToCounterState();
-    clicksToCounterState.data = state.data;
-    passStateToPreviousScreen(clicksToCounterState);
-    view.get().finish();
   }
 
   @Override
@@ -105,6 +101,7 @@ public class ClicksPresenter implements ClicksContract.Presenter {
   public void onClearPressed() {
     // Log.e(TAG, "onClearPressed()");
     state.data = "0";
+    view.get().disableButton();
     model.updateData(state.data);
     view.get().onDataUpdated(state);
   }

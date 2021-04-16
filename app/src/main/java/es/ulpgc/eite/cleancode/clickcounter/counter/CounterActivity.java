@@ -70,7 +70,7 @@ public class CounterActivity
 
   @Override
   public void finish(){
-    finish();
+    this.finish();
   }
 
   @Override
