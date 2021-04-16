@@ -120,7 +120,9 @@ public class CounterPresenter implements CounterContract.Presenter {
   @Override
   public void onIncrementPressed() {
     // Log.e(TAG, "onIncrementPressed()");
-    state.data = state.data+1;
+    int dataNumero = Integer.parseInt(state.data);
+    dataNumero++;
+    state.data = String.valueOf(dataNumero);
     if(state.data.equals(10)){
       state.data = "0";
     }
