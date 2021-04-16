@@ -34,7 +34,7 @@ public class ClicksPresenter implements ClicksContract.Presenter {
     state.data = model.getStoredData();
 
     // use passed state if is necessary
-    CounterToClicksState savedState = getStateFromPreviousScreen();
+    CounterToClicksState savedState = mediator.getClicksPreviousScreenState();
     if (savedState != null) {
 
       // update the model if is necessary

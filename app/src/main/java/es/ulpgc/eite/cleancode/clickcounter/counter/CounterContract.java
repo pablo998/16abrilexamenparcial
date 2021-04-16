@@ -7,7 +7,7 @@ public interface CounterContract {
 
   interface View {
     void injectPresenter(Presenter presenter);
-
+    void enableButtons();
     void navigateToNextScreen();
     void finish();
     void onDataUpdated(CounterViewModel viewModel);

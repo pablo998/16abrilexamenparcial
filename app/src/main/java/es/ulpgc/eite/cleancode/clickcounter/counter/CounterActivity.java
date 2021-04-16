@@ -36,6 +36,9 @@ public class CounterActivity
     btnReset.setText(getResetLabel());
     btnClicks.setText(getClicksLabel());
 
+    btnReset.setEnabled(false);
+    btnClicks.setEnabled(false);
+
 
 
     if (savedInstanceState == null) {
@@ -68,6 +71,12 @@ public class CounterActivity
   @Override
   public void finish(){
     finish();
+  }
+
+  @Override
+  public void enableButtons(){
+    btnReset.setEnabled(true);
+    btnClicks.setEnabled(true);
   }
 
 

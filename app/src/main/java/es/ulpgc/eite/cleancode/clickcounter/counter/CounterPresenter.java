@@ -14,6 +14,8 @@ public class CounterPresenter implements CounterContract.Presenter {
   private CounterState state;
   private CounterContract.Model model;
 
+  private int valorClicks = 0;
+
   private AppMediator mediator;
 
   public CounterPresenter(AppMediator mediator) {
@@ -120,21 +122,25 @@ public class CounterPresenter implements CounterContract.Presenter {
   @Override
   public void onIncrementPressed() {
     // Log.e(TAG, "onIncrementPressed()");
+    valorClicks= valorClicks + 1;
+    view.get().enableButtons();
+
     int dataNumero = Integer.parseInt(state.data);
     dataNumero++;
-
-    String valorPasado = String.valueOf(dataNumero);
-    CounterToClicksState counterToClicksState = new CounterToClicksState();
-    counterToClicksState.data = valorPasado;
-    passStateToNextScreen(counterToClicksState);
 
     if(dataNumero>9){
       dataNumero = 0;
     }
 
+    String valorPasado = String.valueOf(valorClicks);
+    CounterToClicksState counterToClicksState = new CounterToClicksState();
+    counterToClicksState.data=valorPasado;
+    mediator.setCounterNextScreenState(counterToClicksState);
+
     state.data = String.valueOf(dataNumero);
     model.updateData(state.data);
     view.get().onDataUpdated(state);
+
   }
 
   private void passStateToNextScreen(CounterToClicksState state) {
