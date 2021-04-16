@@ -85,6 +85,10 @@ public class ClicksPresenter implements ClicksContract.Presenter {
   @Override
   public void onBackPressed() {
     // Log.e(TAG, "onBackPressed()");
+    ClicksToCounterState clicksToCounterState = new ClicksToCounterState();
+    clicksToCounterState.data = state.data;
+    mediator.setClicksPreviousScreenState(clicksToCounterState);
+    passStateToPreviousScreen(clicksToCounterState);
   }
 
   @Override

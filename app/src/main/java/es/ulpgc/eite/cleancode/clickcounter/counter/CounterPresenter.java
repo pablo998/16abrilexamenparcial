@@ -89,7 +89,6 @@ public class CounterPresenter implements CounterContract.Presenter {
   @Override
   public void onBackPressed() {
     // Log.e(TAG, "onBackPressed()");
-    view.get().finish();
   }
 
   @Override
