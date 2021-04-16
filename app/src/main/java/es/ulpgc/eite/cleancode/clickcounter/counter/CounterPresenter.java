@@ -124,7 +124,7 @@ public class CounterPresenter implements CounterContract.Presenter {
   public void onIncrementPressed() {
     // Log.e(TAG, "onIncrementPressed()");
     valorClicks++;
-    state.Clicks = valorClicks;
+    state.Clicks = String.valueOf(valorClicks);
     view.get().enableButtons();
 
     int dataNumero = Integer.parseInt(state.data);
