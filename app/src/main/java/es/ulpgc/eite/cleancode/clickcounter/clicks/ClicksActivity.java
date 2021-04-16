@@ -33,6 +33,11 @@ public class ClicksActivity
   }
 
   @Override
+  public void finish() {
+    finish();
+  }
+
+  @Override
   protected void onResume() {
     super.onResume();
 

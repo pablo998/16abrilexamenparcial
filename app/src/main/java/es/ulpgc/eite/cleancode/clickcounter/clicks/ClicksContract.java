@@ -8,6 +8,7 @@ public interface ClicksContract {
   interface View {
     void injectPresenter(Presenter presenter);
     void onDataUpdated(ClicksViewModel viewModel);
+    void finish();
   }
 
   interface Presenter {
@@ -25,6 +26,7 @@ public interface ClicksContract {
 
   interface Model {
     String getStoredData();
+    void updateData(String data);
     void onDataFromNextScreen(String data);
     void onRestartScreen(String data);
     void onDataFromPreviousScreen(String data);
