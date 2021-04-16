@@ -3,6 +3,7 @@ package es.ulpgc.eite.cleancode.clickcounter.counter;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -17,12 +18,20 @@ public class CounterActivity
   public static String TAG = CounterActivity.class.getSimpleName();
 
   private CounterContract.Presenter presenter;
+  private TextView tvCounter;
+  private Button btnIncrement, btnReset, btnClicks;
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_counter);
     getSupportActionBar().setTitle(R.string.counter_title);
+
+    tvCounter = findViewById(R.id.tvCounter);
+    btnIncrement = findViewById(R.id.btnIncrement);
+    btnClicks = findViewById(R.id.btnClicks);
+    btnReset = findViewById(R.id.btnReset);
+
 
     if (savedInstanceState == null) {
       AppMediator.resetInstance();
@@ -38,6 +47,12 @@ public class CounterActivity
       presenter.onRestart();
     }
   }
+
+  @Override
+  public void finish(){
+    finish();
+  }
+
 
   @Override
   protected void onResume() {

@@ -33,6 +33,7 @@ public class CounterPresenter implements CounterContract.Presenter {
 
     // call the model and update the state
     state.data = model.getStoredData();
+    view.get().onDataUpdated(state);
 
     /*
     // use passed state if is necessary
@@ -54,6 +55,8 @@ public class CounterPresenter implements CounterContract.Presenter {
 
     // update the model if is necessary
     model.onRestartScreen(state.data);
+    state.data = model.getStoredData();
+    view.get().onDataUpdated(state);
   }
 
   @Override
@@ -83,6 +86,7 @@ public class CounterPresenter implements CounterContract.Presenter {
   @Override
   public void onBackPressed() {
     // Log.e(TAG, "onBackPressed()");
+    view.get().finish();
   }
 
   @Override
@@ -98,16 +102,27 @@ public class CounterPresenter implements CounterContract.Presenter {
   @Override
   public void onClicksPressed() {
     // Log.e(TAG, "onClicksPressed()");
+
+    CounterToClicksState counterToClicksState = new CounterToClicksState();
+    passStateToNextScreen(counterToClicksState);
+
   }
 
   @Override
   public void onResetPressed() {
     // Log.e(TAG, "onResetPressed()");
+    state.data = "0";
+    model.updateData(state.data);
   }
 
   @Override
   public void onIncrementPressed() {
     // Log.e(TAG, "onIncrementPressed()");
+    state.data = state.data+1;
+    if(state.data.equals(10)){
+      state.data = "0";
+    }
+    model.updateData(state.data);
   }
 
   private void passStateToNextScreen(CounterToClicksState state) {

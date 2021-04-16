@@ -19,8 +19,15 @@ public class CounterModel implements CounterContract.Model {
   }
 
   @Override
+  public void updateData(String data) {
+    // Log.e(TAG, "getStoredData()");
+    this.data=data;
+  }
+
+  @Override
   public void onRestartScreen(String data) {
     // Log.e(TAG, "onRestartScreen()");
+    this.data = data;
   }
 
   @Override
