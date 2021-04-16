@@ -32,6 +32,11 @@ public class CounterActivity
     btnClicks = findViewById(R.id.btnClicks);
     btnReset = findViewById(R.id.btnReset);
 
+    btnIncrement.setText(getIncrementLabel());
+    btnReset.setText(getResetLabel());
+    btnClicks.setText(getClicksLabel());
+
+
 
     if (savedInstanceState == null) {
       AppMediator.resetInstance();
@@ -46,6 +51,18 @@ public class CounterActivity
     } else {
       presenter.onRestart();
     }
+  }
+
+  private String getIncrementLabel() {
+    return getResources().getString(R.string.increment_button);
+  }
+
+  private String getResetLabel() {
+    return getResources().getString(R.string.reset_button);
+  }
+
+  private String getClicksLabel() {
+    return getResources().getString(R.string.clicks_button);
   }
 
   @Override

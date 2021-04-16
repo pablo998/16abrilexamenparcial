@@ -122,14 +122,18 @@ public class CounterPresenter implements CounterContract.Presenter {
     // Log.e(TAG, "onIncrementPressed()");
     int dataNumero = Integer.parseInt(state.data);
     dataNumero++;
-    state.data = String.valueOf(dataNumero);
-    if(state.data.equals(10)){
-      state.data = "0";
-    }
-    model.updateData(state.data);
+
+    String valorPasado = String.valueOf(dataNumero);
     CounterToClicksState counterToClicksState = new CounterToClicksState();
-    counterToClicksState.data = state.data;
+    counterToClicksState.data = valorPasado;
     passStateToNextScreen(counterToClicksState);
+
+    if(dataNumero>9){
+      dataNumero = 0;
+    }
+
+    state.data = String.valueOf(dataNumero);
+    model.updateData(state.data);
     view.get().onDataUpdated(state);
   }
 
